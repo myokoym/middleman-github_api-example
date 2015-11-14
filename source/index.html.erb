@@ -8,3 +8,11 @@ title: Welcome to Middleman
     <%= link_to "Read Online Documentation", "http://middlemanapp.com/" %>
   </p><!-- .doc -->
 </div><!-- .welcome -->
+
+<% data.github_api[:commits].each do |commit| %>
+  <% commit.files.each do |file| %>
+    <% code("diff") do %>
+      <%= file.patch %>
+    <% end %>
+  <% end %>
+<% end %>
